@@ -1,0 +1,45 @@
+image: nimlhug/ubuntu-2204-composer:latest
+
+
+pipelines:
+  branches:
+   'development':
+     - step:
+         script:
+           - /deploy-remote.sh "${QA_REMOTE_HOST}" "${OAUTH_CLIENT_KEY}" "${OAUTH_CLIENT_SECRET}"
+  pull-requests:
+   '**':
+     - step:
+         script:
+           - /pull-request.sh
+  custom:
+    prod-composer:
+      - step:
+          name: Update composer
+          script:
+            - /composer-prod.sh
+    qa-deploy:
+      - step:
+          name: QA deploy
+          script:
+            - /deploy-remote.sh "${QA_REMOTE_HOST}" "${OAUTH_CLIENT_KEY}" "${OAUTH_CLIENT_SECRET}"
+    stg-deploy:
+      - step:
+          name: Staging deploy
+          script:
+            - /deploy-remote.sh "${STG_REMOTE_HOST}" "${OAUTH_CLIENT_KEY}" "${OAUTH_CLIENT_SECRET}"
+    prod-deploy:
+      - step:
+          name: Production deploy
+          script:
+            - /deploy-remote.sh "${PROD_REMOTE_HOST}" "${OAUTH_CLIENT_KEY}" "${OAUTH_CLIENT_SECRET}"
+    qa-composer:
+      - step:
+          name: Update composer
+          script:
+            - /composer-qa.sh "${OAUTH_CLIENT_KEY}" "${OAUTH_CLIENT_SECRET}"
+    get-prod-plugins:
+      - step:
+          name: Add new plugins from prod to QA
+          script:
+            - /prod-plugins-to-qa.sh

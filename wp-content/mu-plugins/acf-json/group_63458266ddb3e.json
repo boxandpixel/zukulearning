@@ -1,0 +1,44 @@
+{
+    "key": "group_63458266ddb3e",
+    "title": "Resource: Title Override",
+    "fields": [
+        {
+            "key": "field_6345827e4e27a",
+            "label": "Title Override",
+            "name": "title_override",
+            "type": "text",
+            "instructions": "If filled this field will be used as the H1 of the page over the page title.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "resource"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1665499815
+}

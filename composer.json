@@ -1,0 +1,91 @@
+{
+    "require": {
+        "firebase/php-jwt": "^5.0",
+        "johnpbloch/wordpress": "6.4.2",
+        "johnpbloch/wordpress-core-installer": "^2.0",
+        "klg/klg-catalog": "~1.4.1",
+        "klg/klg-common": "~1.2.0",
+        "klg/klg-control-updates": "~2.0.0",
+        "klg/klg-login-registration": "~1.0.20",
+        "klg/klg-orders": "~1.1.0",
+        "vlucas/phpdotenv": "^2.4",
+        "wpackagist-plugin/404-to-homepage": "1.0",
+        "wpackagist-plugin/autocomplete-woocommerce-orders": "3.2.0",
+        "wpackagist-plugin/cart-for-woocommerce": "1.4.0",
+        "wpackagist-plugin/duracelltomi-google-tag-manager": "1.19.1",
+        "wpackagist-plugin/funnel-builder": "2.17.1",
+        "wpackagist-plugin/funnelkit-stripe-woo-payment-gateway": "1.6.0",
+        "wpackagist-plugin/imagify": "2.1.3.1",
+        "wpackagist-plugin/insert-headers-and-footers": "2.1.7",
+        "wpackagist-plugin/manage-notification-emails": "1.8.6",
+        "wpackagist-plugin/nginx-helper": "2.2.4",
+        "wpackagist-plugin/optinmonster": "2.15.3",
+        "wpackagist-plugin/redirection": "5.4.1",
+        "wpackagist-plugin/shortcode-in-menus": "3.5.1",
+        "wpackagist-plugin/the-events-calendar": "6.2.9",
+        "wpackagist-plugin/user-menus": "1.3.2",
+        "wpackagist-plugin/woocommerce": "8.5.1",
+        "wpackagist-plugin/wordfence": "7.11.1",
+        "wpackagist-plugin/wordpress-seo": "21.8",
+        "wpackagist-plugin/worker": "4.9.19",
+        "wpackagist-plugin/wp-marketing-automations": "2.7.2",
+        "wpackagist-plugin/wpo365-login": "26.0"
+    },
+    "extra": {
+        "installer-paths": {
+            "wp-content/plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "wp-content/themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        },
+        "wordpress-install-dir": "wp"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org",
+            "only": [
+                "wpackagist-plugin/*",
+                "wpackagist-theme/*"
+            ]
+        },
+        {
+            "name": "klg/klg-catalog",
+            "type": "git",
+            "url": "git@bitbucket.org:surgentit/klg-catalog.git"
+        },
+        {
+            "name": "klg/klg-common",
+            "type": "git",
+            "url": "git@bitbucket.org:surgentit/klg-common.git"
+        },
+        {
+            "name": "klg/klg-control-updates",
+            "type": "git",
+            "url": "git@bitbucket.org:surgentit/klg-control-updates.git"
+        },
+        {
+            "name": "klg/klg-densmore",
+            "type": "git",
+            "url": "git@bitbucket.org:surgentit/klg-densmore.git"
+        },
+        {
+            "name": "klg/klg-login-registration",
+            "type": "git",
+            "url": "git@bitbucket.org:surgentit/klg-login-registration.git"
+        },
+        {
+            "name": "klg/klg-orders",
+            "type": "git",
+            "url": "git@bitbucket.org:surgentit/klg-orders.git"
+        }
+    ],
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "johnpbloch/wordpress-core-installer": true
+        }
+    }
+}

@@ -1,0 +1,106 @@
+{
+    "key": "group_62d5c71f9fcf1",
+    "title": "Product: Bundle",
+    "fields": [
+        {
+            "key": "field_62d5c7680a318",
+            "label": "Short Title",
+            "name": "short_title",
+            "type": "text",
+            "instructions": "Title used within \"Product Bundle Feature Comparison\" block and \"Product Bundle Cards\" block.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "i.e. Ultimate Pass",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_62d6e63b1e592",
+            "label": "Card Description",
+            "name": "card_description",
+            "type": "wysiwyg",
+            "instructions": "Shown in \"Product Bundle Cards\" block on desktop.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_62d6e6961e593",
+            "label": "Card Description - Mobile",
+            "name": "card_description_mobile",
+            "type": "textarea",
+            "instructions": "Shown in \"Product Bundle Cards\" block on mobile.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_63c98a047da5f",
+            "label": "Discount Code Text",
+            "name": "discount_code_text",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 3,
+            "new_lines": "wpautop"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "product"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "product_type:bundle"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1674153024
+}

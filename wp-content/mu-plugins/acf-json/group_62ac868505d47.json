@@ -1,0 +1,100 @@
+{
+    "key": "group_62ac868505d47",
+    "title": "Top Level Resource Taxonomy",
+    "fields": [
+        {
+            "key": "field_62ac86b46d14c",
+            "label": "Featured Post",
+            "name": "featured_post",
+            "type": "post_object",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "resource"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 0,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy_depth",
+                "operator": "==",
+                "value": "0"
+            },
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "resource_topic"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy_depth",
+                "operator": "==",
+                "value": "0"
+            },
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "resource_career"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy_depth",
+                "operator": "==",
+                "value": "0"
+            },
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "resource_product"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy_depth",
+                "operator": "==",
+                "value": "0"
+            },
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "resource_audience"
+            }
+        ],
+        [
+            {
+                "param": "taxonomy_depth",
+                "operator": "==",
+                "value": "0"
+            },
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "resource_type"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1655476770
+}

@@ -1,0 +1,71 @@
+{
+    "key": "group_5cdd85d4a8fc6",
+    "title": "Page",
+    "fields": [
+        {
+            "key": "field_62bc64a41eb1a",
+            "label": "Background",
+            "name": "page_background",
+            "aria-label": "",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "none": "None",
+                "blue-gradient-shapes": "Blue gradient with shapes",
+                "gold-gradient-shapes": "Gold gradient with shapes",
+                "blue-shapes": "Blue shapes on white background",
+                "gold-shapes": "Gold shapes on white background",
+                "blue-gradient": "Blue gradient",
+                "gold-gradient": "Gold gradient"
+            },
+            "default_value": "blue-gradient-shapes",
+            "return_format": "value",
+            "multiple": 0,
+            "allow_null": 0,
+            "ui": 0,
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            },
+            {
+                "param": "page_type",
+                "operator": "!=",
+                "value": "front_page"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "page-hero-cards.php"
+            },
+            {
+                "param": "page_template",
+                "operator": "!=",
+                "value": "page_blog-lp.php"
+            }
+        ]
+    ],
+    "menu_order": 10,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1682963309
+}
