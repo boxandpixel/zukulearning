@@ -10,11 +10,11 @@ Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
 
-A starter theme called zuku.
+A starter theme called zuku, or underscores.
 
 == Description ==
 
-Description
+Hi. I'm a starter theme called zuku, or underscores, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
 
 == Installation ==
 
@@ -26,7 +26,7 @@ Description
 
 = Does this theme support any plugins? =
 
-zuku includes support for WooCommerce and for Infinite Scroll in Jetpack.
+_s includes support for WooCommerce and for Infinite Scroll in Jetpack.
 
 == Changelog ==
 
