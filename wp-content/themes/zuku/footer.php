@@ -35,7 +35,7 @@
 	
 	
 ?>
-test
+test 10:29am
 	<footer id="colophon" class="site-footer">
 		<div class="footer-content">
 			<div class="footer-branding">
