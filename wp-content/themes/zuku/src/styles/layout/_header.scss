@@ -1,0 +1,85 @@
+@use '../abstracts/mixins' as *;
+
+// body.single-product header.site-header {
+// border-bottom: 0;
+// }
+
+header {
+    border-bottom: solid 1px rgba(black, .15);
+    position: relative;
+
+    @include breakpoint(tablet) {
+        border-bottom: unset;
+    }
+    
+    .site-header__menu {
+        position: relative; // for mega menu placement
+        
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 18px;
+            height: 66px; 
+
+            @include content-wide;
+
+            @include breakpoint(tablet) {
+                padding-top: 28px;
+                padding-bottom: unset;
+                height: unset;
+            }
+        }
+        
+
+        .site-header__branding-nav {
+            display: flex;
+            // background-color: lightgreen;
+            
+            @include breakpoint(tablet) {
+                gap: 57px;
+                align-items: center;
+            }
+
+            .site-header__branding {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                width: 104px;
+
+                @include breakpoint(tablet) {
+                    position: unset;
+                    left: unset;
+                    top: unset;
+                    transform: unset;
+                    width: unset;
+                    z-index: 5;
+                }
+
+            }
+
+            .site-header__nav-group {
+                @include breakpoint(mobile) {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 48px;
+                }
+
+                &:has(.is-open) {
+                    @include breakpoint(mobile) {
+                        position: fixed;
+                        top: 68px;
+                        left: 0;
+                        width: 100%;
+                        min-height: 100vh;
+                        background-color: white;
+                        padding-left: 24px;
+                        padding-right: 24px;
+                        z-index: 5;
+                    }
+                }
+
+            }
+        }
+    }
+}

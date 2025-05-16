@@ -10,6 +10,8 @@ const terser = require('gulp-terser');
 const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
 const header = require('gulp-header');
+const concat = require('gulp-concat');
+
 
 // Paths
 const paths = {
@@ -54,18 +56,19 @@ function styles() {
     .pipe(dest(paths.styles.dest));
 }
 
-// Lint, minify, and sourcemap JS
+// Lint, concat, minify, and sourcemap JS
 function scripts() {
   return src(paths.scripts.src)
     .pipe(plumber())
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(sourcemaps.init())
+    .pipe(concat('scripts.min.js')) // 👈 combine all scripts into one file
     .pipe(terser())
-    .pipe(rename('scripts.min.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.scripts.dest));
 }
+
 
 // Watch styles and scripts
 function watchFiles() {

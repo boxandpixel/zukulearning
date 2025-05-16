@@ -1,0 +1,80 @@
+// _typography.scss
+@use 'colors.functions' as *;
+@use 'typography.mixins' as *;
+
+h1.hero-headline {
+    @include apply-type(display-xxl);
+}
+
+h1 {
+    color: color(black);
+    @include apply-type(heading-xxl);
+    
+}
+
+h2 {
+    @include apply-type(heading-xl);
+}
+
+h3 {
+    @include apply-type(heading-lg);
+}
+
+h4 {
+    @include apply-type(heading-md);
+}
+
+h5 {
+    @include apply-type(heading-sm);
+}
+
+h6 {
+    @include apply-type(heading-xs);
+}
+
+.large-card-subheading {
+    @include apply-type(heading-xxs);
+}
+
+p {
+    @include apply-type(body);
+}
+
+.caption {
+    text-transform: uppercase;
+    @include apply-type(caption);
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    @include apply-type(eyebrow);
+}
+
+.button {
+    @include apply-type(button);
+}
+
+.heading--black {
+    @include apply-type(heading-black);
+}
+
+.heading-sm-uniform {
+    @include apply-type(heading-sm-uniform);
+}
+
+.table-features {
+    @include apply-type(table-features);
+}
+
+.stat-uniform {
+    @include apply-type(stat-uniform);
+}
+
+.footer-utility-menu {
+    @include apply-type(footer-utility-menu);
+}
+
+.heading-mega-menu {
+    @include apply-type(heading-mega-menu);
+}
+  

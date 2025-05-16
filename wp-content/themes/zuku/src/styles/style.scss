@@ -1,28 +1,86 @@
-// Abstracts
-@use 'abstracts/variables' as *;   // Use the variables directly (with `*`)
-@use 'abstracts/colors' as *;      // Colors now accessible as $color-primary, etc.
-@use 'abstracts/typography' as *; // Typography variables
-@use 'abstracts/mixins' as *;     // Mixins
+// -------------------------
+// Abstracts (order matters)
+// -------------------------
 
+@use 'abstracts/variables' as *;             // Variables should come first
+@use 'abstracts/colors.map' as *;                // Color definitions
+@use 'abstracts/colors.functions' as *;                // Color definitions
+@use 'abstracts/typography.map' as *;        // Typography map definitions
+@use 'abstracts/typography.functions' as *;  // Typography getter functions
+@use 'abstracts/typography.mixins' as *;     // Typography mixins
+
+@use 'abstracts/mixins' as *;                // Other global mixins
+
+// -------------------------
 // Base styles
-@use 'base/reset';                // Reset styles
-@use 'base/globals';              // Global styling (body, links, etc.)
+// -------------------------
 
+@use 'base/reset';            // CSS resets first
+@use 'base/globals';          // Global element styles (body, html, links, etc.)
+@use 'abstracts/typography' as *;     // Typography rules
+
+// -------------------------
 // Layout styles
-// @use 'layout/grid';               // Grid system and layout helpers
-// @use 'layout/header';             // Header layout styles
-// @use 'layout/footer';             // Footer layout styles
-// @use 'layout/sidebar';            // Sidebar layout styles
+// -------------------------
 
-// Blocks (BEM-style components)
-// @use 'blocks/button';             // .button, .button--primary, .button--secondary
-// @use 'blocks/card';               // .card, .card--featured
-// @use 'blocks/hero';               // .hero, .hero--highlighted
-// @use 'blocks/form';               // .form, .form--inline
+// @use 'layout/grid';
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/wc-single-product-hero';
+@use 'layout/single';
+// @use 'layout/sidebar';
 
+// -------------------------
+// Components (BEM-style)
+// -------------------------
+@use 'components/promo-banner';
+@use 'components/buttons';
+@use 'components/header-utility-menu';
+@use 'components/main-menu';
+@use 'components/account-controls-menu';
+@use 'components/pills';
+@use 'components/product-tabs';
+@use 'components/wc-variation-tabs';
+@use 'components/gravity-forms';
+@use 'components/blog-breadcrumb';
+
+// -------------------------
+// Block components (BEM-style)
+// -------------------------
+
+@use 'blocks/homepage-hero';
+@use 'blocks/marketing-announcement';
+@use 'blocks/testimonial';
+@use 'blocks/alternating-cards';
+@use 'blocks/blog-posts';
+@use 'blocks/featured-products-all-categories';
+@use 'blocks/product-marketing-landing-hero';
+@use 'blocks/featured-products-select-categories';
+@use 'blocks/helpful-links';
+@use 'blocks/promo';
+@use 'blocks/resources';
+@use 'blocks/question-of-the-day-teaser';
+@use 'blocks/faculty-hero';
+@use 'blocks/faculty-group';
+@use 'blocks/contact-cards';
+@use 'blocks/product-features';
+@use 'blocks/product-features-grid';
+@use 'blocks/product-testimonials';
+@use 'blocks/breadcrumb';
+@use 'blocks/form-group-hero';
+@use 'blocks/image-with-stats-hero';
+@use 'blocks/alternating-50-50-promo-sections';
+@use 'blocks/useful-tools-hero';
+
+// -------------------------
 // Page-specific styles
-@use 'pages/home';                // Home page specific styles
-// @use 'pages/about';               // About page specific styles
+// -------------------------
 
-// Vendors
-// @use 'vendors/normalize';         // Normalize styles or third-party libraries
+@use 'pages/home';
+// @use 'pages/about';
+
+// -------------------------
+// Vendor styles
+// -------------------------
+
+// @use 'vendors/normalize';

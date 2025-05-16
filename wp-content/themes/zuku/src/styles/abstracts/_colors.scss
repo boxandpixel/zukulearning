@@ -1,0 +1,15 @@
+// Base colors
+$color-white: #fff;
+$color-black: #000;
+$color-primary: #3498db;
+$color-secondary: #2ecc71;
+$color-accent: #e74c3c;
+
+// Theme map (optional, useful for dynamic themes)
+$theme-colors: (
+  primary: $color-primary,
+  secondary: $color-secondary,
+  accent: $color-accent,
+  text: #333,
+  background: #f9f9f9
+);
