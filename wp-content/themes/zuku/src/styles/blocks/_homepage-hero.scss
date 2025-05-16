@@ -1,0 +1,218 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.homepage-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 24px;
+    margin-top: 40px;
+    @include content-wide;
+    
+
+    @include breakpoint(tablet) {
+        flex-direction: row;
+        gap: 66px;
+        margin-top: 87px;
+        margin-bottom: 80px;
+    }
+
+    .homepage-hero__text-content {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @include breakpoint(tablet) {
+            flex: 1 1 0%; 
+            min-width: 0;
+            justify-content: space-between;
+        }
+    }
+
+    .homepage-hero__products {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+ 
+        @include breakpoint(tablet) {
+            gap: 17px;
+            width: 602px;
+            flex: 0 0 602px;
+            // flex-shrink: 1;
+        }
+
+        .homepage-hero-products__product{
+            display: block;
+            background-repeat: no-repeat;
+            position: relative;
+            overflow: hidden;
+            @include border-radius__top-left;
+            @include border-radius__top-right;
+            @include border-radius__bottom-right;
+            @include border-radius__bottom-left;
+
+            .homepage-hero-products__product-arrow {
+                position: absolute;
+                top: 13px;
+                right: 15px;
+                background-color: color(navy);
+                content: "";
+                opacity: 0;
+                border-radius: 999px;
+                transition: all 0.3s ease-in-out;
+                z-index: 3;
+                @include icon-arrow-size--medium(white);
+            }         
+
+            &:hover {
+                .homepage-hero-products__product-arrow {
+                    opacity: 1;
+                }
+            }
+
+            // .homepage-hero-products__product-image {
+            //     position: absolute;
+            //     top: 0;
+            //     left: 0;
+            //     width: 100%;
+            //     height: 100%;
+                
+            // }
+
+            &::before,
+            &::after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                transition: opacity 0.3s ease-in;
+                content: "";
+
+                &:hover {
+                    opacity: 0;
+                }
+            }            
+
+            &.homepage-hero-products__product--test-prep {
+
+                &::before {
+                    background: linear-gradient(136deg, rgba(183, 230, 245, 0.00) 28.34%, #B7E6F5 88.64%), color(skyBlueZukuReview);
+                    opacity: 1;
+                    z-index: 1;
+                }
+
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+
+                &::after {
+                    background: linear-gradient(136deg, rgba(183, 230, 245, 0.00) 28.34%, #B7E6F5 60.23%), color(skyBlueZukuReview);
+                    opacity: 0;
+                    z-index: 2;
+                }
+
+                &:hover {
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+                
+                .homepage-hero-products__product-container {
+                    background-size: 182px;
+                    background-position: right -5px bottom 0px;
+
+                    @include breakpoint(tablet) {
+                        background-size: 305px;
+                        background-position: right 0px bottom 0px; // -5px
+                    }
+                }
+            }
+
+            &.homepage-hero-products__product--continuing-education {
+
+                &::before {
+                    background: linear-gradient(136deg, rgba(255, 212, 197, 0.00) 28.34%, #FFD4C5 88.64%), color(salmonDarkZukuCe);
+                    opacity: 1;
+                    z-index: 1;
+                }
+
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+
+                &::after {
+                    background: linear-gradient(136deg, rgba(255, 212, 197, 0.00) 28.34%, #FFD4C5 64.58%), color(salmonDarkZukuCe); 
+                    opacity: 0;
+                    z-index: 2;
+                }
+
+                &:hover {
+                    &::after {
+                        opacity: 1;
+                    }
+                }
+
+                .homepage-hero-products__product-container {
+                    background-size: 158px;
+                    background-position: right 6px bottom 0px;
+
+                    @include breakpoint(tablet) {
+                        background-size: 225px;
+                        background-position: right 20px bottom 0px;
+                    }
+                }
+            }    
+            
+            .homepage-hero-products__product-container {
+                position: relative;
+                z-index: 3;
+                padding: 15px;
+                height: 125px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: space-between;
+                background-repeat: no-repeat;
+                background-image: var(--bg-img);
+
+
+                @include breakpoint(tablet) {
+                    padding: 30px 30px 10px;
+                    height: 125px;                    
+                    height: 180px;
+                }  
+
+                .homepage-hero-products__product-image {
+                    width: 156px;
+    
+                    @include breakpoint(tablet) {
+                        height: 56px;
+                    }
+                }  
+                
+                .homepage-hero-products__product-logo {
+                    max-height: 32px;
+
+                    @include breakpoint(tablet) {
+                        max-height: unset;
+                    }
+                }
+                
+                .homepage-hero-products__product-description {
+                    width: 156px;
+
+                    @include breakpoint(tablet) {
+                        // width: 275px;
+                        width: 257px; // Only for review
+                    }
+                }
+            }
+        }
+    }
+}

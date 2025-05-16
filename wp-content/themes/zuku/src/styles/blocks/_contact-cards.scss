@@ -1,0 +1,175 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.contact-cards {
+    padding-top: 40px;
+    padding-bottom: calc(40px + 30px);
+    
+    // width: 1150px;
+
+    @include breakpoint(tablet) {
+        padding-top: 80px;
+        padding-bottom: unset;
+        margin-bottom: calc(177px + 30px);
+        // margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        @include content-wide;
+
+        @include breakpoint(tablet) {
+            gap: 56px;
+        }
+
+        .contact-cards__header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            .contact-cards__eyebrow {
+                margin-bottom: 8px;
+            }
+
+            .contact-cards__heading {
+                margin-bottom: 16px;
+            }
+
+            .contact-cards__description {
+                width: 100%;
+                max-width: 902px;
+                margin-bottom: 32px;
+                margin-left: auto;
+                margin-right: auto;
+            }            
+        }
+
+        .contact-cards__group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+
+            @include breakpoint(tablet) {
+                align-items: center;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .contact-cards__card {
+                background-color: color(cream);
+                padding: 32px 22px;
+                position: relative;
+                aspect-ratio: 342 / 204;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                text-align: center;
+                gap: 12px;
+                background-repeat: no-repeat;
+                background-position: center bottom;
+                overflow: hidden;
+                transform: all 0.3s ease-in-out;
+                aspect-ratio: 1 / 1;
+                width: 100%;
+                max-width: 342px;
+                @include border-radius(30px);
+
+                @include breakpoint(tablet) {
+                    aspect-ratio: 393 / 540;
+                    width: 100%;
+                    max-width: 393px;
+                    gap: 20px;
+                }
+
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(180deg, rgba(225, 194, 171, 0.00) 33.71%, #E1C2AB 90.96%);
+                    content: "";
+                    opacity: 0;
+                    transition: opacity 0.3s ease-in-out;
+
+                }
+
+                &:hover {
+                    &::before {
+                        opacity: 1;
+                    }
+                }
+
+                .contact-cards__card-arrow {
+                    position: absolute;
+                    bottom: 16px;
+                    right: 16px;
+                    background-color: color(navy);
+                    content: "";
+                    opacity: 1;
+                    border-radius: 999px;
+                    transition: all 0.3s ease-in-out;
+                    z-index: 3;
+                    @include icon-arrow-size--medium(white);
+
+                    @include breakpoint(tablet) {
+                        bottom: 26px;
+                        right: 26px;                        
+                        opacity: 0;
+                    }
+                }         
+    
+                &:hover {
+                    .contact-cards__card-arrow {
+                        opacity: 1;
+                    }
+                } 
+                
+                .contact-cards__card-image {
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    width: 100%;
+                    height: 100%;
+
+                    .contact-cards__card-image-inner {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-image: var(--bg-img); // The image
+                        background-size: 60%;
+                        background-position: center bottom;
+                        background-repeat: no-repeat;
+                        transition: background-size 0.3s ease-in-out; // Smooth zoom effect
+                        z-index: 3; // Behind the content   
+                        
+                        @include breakpoint(tablet) {
+                            transform-origin: center bottom;
+    
+                            transition: transform 0.3s ease-in-out, background-size 0.3s ease-in-out;
+                            background-size: 90%;
+                            background-position: center bottom // 20px
+                        }
+                    }
+
+                }
+
+                &:hover {
+                    .contact-cards__card-image-inner {
+                        background-size: 95%;
+                    }
+                }
+                
+            }
+
+        }
+     
+    }
+}

@@ -1,0 +1,220 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+body.page-our-faculty .helpful-links {
+    padding-bottom: calc(40px + $footer-margin-offset);
+    
+    @include breakpoint(tablet) {
+        padding-bottom: 0;
+        margin-bottom: $footer-margin-offset;
+    }
+}
+
+.helpful-links {
+    background-color: rgba(color(skyBlue), .5);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    
+    &.helpful-links--light-blue {
+        background-color: color(skyBlue);
+
+        @include breakpoint(tablet) {
+            background-color: unset;
+            margin-bottom: 80px;
+        }
+    }
+
+    @include breakpoint(tablet) {
+        // padding-top: 80px;
+        margin-bottom: 80px;
+        // margin-bottom: 80px;
+    }
+
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        @include breakpoint(tablet) {
+            padding-left: unset;
+            padding-right: unset;
+        }
+
+        .helpful-links__header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            @include content-wide;
+
+            @include breakpoint(tablet) {
+                margin-bottom: 56px;
+            }
+
+            .helpful-links__eyebrow {
+                margin-bottom: 8px;
+            }
+
+            .helpful-links__heading {
+                margin-bottom: 16px;
+            }
+
+            .helpful-links__description {
+                width: 100%;
+                max-width: 902px;
+                margin-bottom: 32px;
+                margin-left: auto;
+                margin-right: auto;
+            }   
+            
+            .helpful-links__links {
+                display: flex;
+                flex-direction: column;
+                gap: 17px;
+                align-items: center;
+
+                @include breakpoint(tablet) {
+                    flex-direction: row;
+                    justify-content: center;
+                }
+
+                a {
+                    width: 240px;
+                    max-width: 100%;
+                }
+            }
+        }
+
+        .helpful-links__group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            @include breakpoint(tablet) {
+                gap: 22px;
+                position: relative;
+            }
+
+            .helpful-links__image {
+                aspect-ratio: 342 / 220;
+                position: relative;
+
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    content: "";
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+                    @include border-radius(30px);
+
+                    @include breakpoint(tablet) {
+                        border-radius: unset;
+                    }
+                }                
+
+
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    aspect-ratio: 1366 / 730;
+                }
+
+                img {
+                    @include border-radius(30px);
+                    
+                    @include breakpoint(tablet) {
+                        border-radius: unset;
+                        width: 100%;
+                        max-width: 100%;
+                    }                    
+                }
+            }
+
+            .helpful-links__cards {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                @include breakpoint(tablet) {
+                    position: absolute;
+                    width: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: 80px;
+                    flex-direction: row;
+                    justify-content: center;
+                    padding-left: 24px;
+                    padding-right: 24px;
+                }
+
+
+                .helpful-links__text-card {
+                    padding: 40px 27px;
+                    background: white;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    transition: background-color 0.3s ease-in-out;
+                    aspect-ratio: 342 / 220;
+                    position: relative;
+                    @include border-radius__top-left;
+                    @include border-radius__top-right;
+                    @include border-radius__bottom-right;
+                    @include border-radius__bottom-left;
+                    
+                    @include breakpoint(tablet) {
+                        width: 100%;
+                        max-width: 291px;
+                        aspect-ratio: 291 / 261;
+                        background-color: rgba(255, 255, 255, 0.8); /* 80% transparent white */
+                        backdrop-filter: blur(10px); /* blur the background behind the overlay */
+                        -webkit-backdrop-filter: blur(10px); /* Safari support */                        
+                        padding: 40px 27px;
+                    }     
+
+                    &:hover {
+                        background: white;
+                    }
+
+                    .helpful-links__arrow {
+                        position: absolute;
+                        top: 16px;
+                        right: 16px;
+                        content: "";
+                        border-radius: 999px;
+                        transition: all 0.3s ease-in-out;
+                        z-index: 3;
+                        border: solid 2px color(navy);
+                        @include icon-arrow-size--medium(navy);
+
+                        @include breakpoint(tablet) {
+                            top: 11px;
+                            right: 11px;
+                            opacity: 0;
+                            background-color: color(navy);
+                            @include icon-arrow-size--medium(white);
+                        }
+                        
+                    }         
+        
+                    &:hover {
+                        .helpful-links__arrow{
+                            opacity: 1;
+                        }
+                    }     
+                    
+                    &:active {
+                        .helpful-links__arrow {
+                            background-color: color(navy);
+                            @include icon-arrow-size--medium(white);
+                        }
+                    }
+                }
+            }
+
+        }
+     
+    }
+}

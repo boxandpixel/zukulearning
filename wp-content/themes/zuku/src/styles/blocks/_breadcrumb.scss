@@ -1,0 +1,53 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.breadcrumb {
+    margin-top: 40px;
+    margin-bottom: 32px;
+    @include content-wide;
+
+    @include breakpoint(tablet) {
+        margin-top: 75px;
+        margin-bottom: 40px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint(tablet) {
+            flex-direction: row;
+            justify-content: flex-start
+         
+        }      
+        
+        .breadcrumb__link {
+            a {
+                position: relative;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    border: solid 1.25px color(navy);
+                    border-radius: 999px;
+                    @include icon-arrow-size--small(color(navy));
+
+                }
+                display: inline-block;
+                padding-left: 28px;
+                color: black;
+
+                &:hover {
+                    &:before {
+                        background-color: color(navy);
+                        @include icon-arrow-size--small(white);
+                    }
+                }
+            }
+        }
+    }
+
+}

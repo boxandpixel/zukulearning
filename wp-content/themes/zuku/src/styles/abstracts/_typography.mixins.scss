@@ -1,0 +1,77 @@
+@use 'sass:map';
+@use 'typography.functions' as *;
+
+
+@mixin apply-type($key) {
+  $type: get-type($key);
+  
+  // Get mobile and desktop styles
+  $mobile: map.get($type, mobile);
+  $desktop: map.get($type, desktop);
+  
+  // Set fallback values for mobile if not defined
+  @if $mobile == null {
+    $mobile: (size: null, line-height: null, letter-spacing: null);
+  }
+
+  // Set desktop to mobile if not defined
+  @if $desktop == null {
+    $desktop: $mobile;
+  }
+
+  // Get text-transform if set
+  $text-transform: map.get($type, text-transform);
+
+  // Apply mobile styles if defined
+  @if map.get($mobile, size) != null {
+    font-size: map.get($mobile, size);
+  }
+  @if map.get($mobile, line-height) != null {
+    line-height: map.get($mobile, line-height);
+  }
+  @if map.get($mobile, letter-spacing) != null {
+    letter-spacing: map.get($mobile, letter-spacing);
+  }
+  font-weight: map.get($type, weight);
+
+  // Apply text-transform if defined
+  @if $text-transform {
+    text-transform: $text-transform;
+  }
+
+  // Apply desktop styles with media query if defined
+  @media (min-width: 768px) {
+    @if map.get($desktop, size) != null {
+      font-size: map.get($desktop, size);
+    }
+    @if map.get($desktop, line-height) != null {
+      line-height: map.get($desktop, line-height);
+    }
+    @if map.get($desktop, letter-spacing) != null {
+      letter-spacing: map.get($desktop, letter-spacing);
+    }
+  }
+}
+
+
+
+
+@mixin apply-typography($key) {
+  $type: get-type($key);
+  $desktop: map.get($type, desktop);
+  $mobile: map.get($type, mobile);
+  $weight: map.get($type, weight);
+
+  font-size: map.get($desktop, size);
+  line-height: map.get($desktop, line-height);
+  letter-spacing: map.get($desktop, letter-spacing);
+  font-weight: $weight;
+
+  @media (min-width: 768px) {
+    font-size: map.get($desktop, size);
+    line-height: map.get($desktop, line-height);
+    letter-spacing: map.get($desktop, letter-spacing);
+  }
+}
+
+  

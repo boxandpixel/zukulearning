@@ -1,0 +1,215 @@
+
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.single {
+    
+    article {
+        padding-bottom: calc(80px + 30px);
+        
+        // Header
+        header.entry-header {
+            background-color: rgba(color(lightCoral),.5);
+            width: 100%;
+            padding-top: 28px;
+            padding-bottom: 70px;
+            margin-bottom: 40px;
+
+            @include breakpoint(tablet) {
+                margin-bottom: 53px;
+            }
+
+            .container {
+                display: flex;
+                flex-direction: column;
+                gap: 32px;
+                @include content-wide;
+
+                @include breakpoint(tablet) {
+                    gap: 16px;
+                }
+
+                .entry-header__group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 32px;
+
+                    @include breakpoint(tablet) {
+                        flex-direction: row;
+                        gap: 60px;
+                    }
+
+                    .entry-header__image {
+                        flex-basis: 49.1%; /* 600 / (600 + 537) ≈ 0.528 */
+                        min-width: 200px;
+                        img {
+                            aspect-ratio: 601 / 442;
+                            @include border-radius(30px);
+                        }
+                    }
+
+                    .entry-header__details {
+                        flex-basis: 43.9%;
+                        min-width: 200px;   
+                        align-content: center;   
+
+                        .entry-header__details-eyebrow {
+                            margin-bottom: 16px;
+                        }
+                        
+                        .entry-header__details-meta {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 16px;
+
+                            @include breakpoint(tablet) {
+                                gap: 26px;
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        .entry-content {
+            @include content-wide;
+
+            .wp-block-heading {
+                margin-bottom: 16px;
+                @include content-blog;
+            }
+
+            & > p {
+                @include content-blog;
+            }
+
+            ol.wp-block-list {
+                list-style: decimal;
+                padding-left: 7px;
+                margin-bottom: 20px;
+                @include apply-type(body);
+                @include content-blog;
+
+                li {
+                    margin-left: 20px;
+                }
+            }
+
+            & > p {
+                margin-bottom: 20px; // check this value
+            }
+
+            .wp-block-image {
+                padding-bottom: 40px;
+                margin-bottom: 40px;
+                @include content-blog-wide;
+
+                img {
+                    @include border-radius(30px);
+                }
+
+                figcaption {
+                    font-style: italic;
+                }
+            }
+
+            .wp-block-media-text {
+                display: flex;
+                gap: 40px;
+                flex-direction: column;
+                @include content-blog-wide;
+
+                @include breakpoint(tablet) {
+                    flex-direction: row;
+                    padding-bottom: 40px;
+                }
+
+                .wp-block-media-text__media {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    
+                    @include breakpoint(tablet) {
+                        flex: 0 0 486px;
+                        max-width: 486px;
+                    }                    
+
+                    img {
+                        @include border-radius(30px);
+
+                        @include breakpoint(tablet) {
+                            aspect-ratio: 486 / 448;
+                        }
+                    }
+
+                    figcaption {
+                        font-style: italic !important;
+                    }
+                }
+
+                .wp-block-media-text__content {
+                    padding: 0;
+
+                    @include breakpoint(tablet) {
+                        flex: 1;
+                        max-width: calc(100% - 486px);                        
+                    }
+                }                
+            }
+
+            .wp-block-separator {
+                
+                margin-top: 40px;
+                margin-bottom: 80px;
+                border-top: .5px solid hsla(0,0%,0%,0.2);
+                border-bottom: .5px solid hsla(0,0%,0%,0.2);
+                @include content-blog-wide;
+            }
+
+            .entry-content__author {
+                background-color: color(cream);
+                display: flex;
+                flex-direction: column;
+                padding: 32px 24px;
+                gap: 32px;
+                @include border-radius(30px);
+                @include content-blog-wide;
+                
+                @include breakpoint(tablet) {
+                    flex-direction: row;
+                    padding: 50px;
+                }
+
+                
+
+                .entry-content__author-image {
+                    width: 100%;
+                    max-width: 170px;
+                    flex-grow: 0;
+
+                    img {
+                        @include border-radius(30px);
+                    }
+                }
+
+                .entry-content__author-details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+                    .entry-content__author-meta {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;                
+                    }
+
+                    .entry-content__author-bio {
+                        @include apply-type(body);
+                    }
+                }
+            }
+        }
+    }
+}

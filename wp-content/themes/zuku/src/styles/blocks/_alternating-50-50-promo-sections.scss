@@ -1,0 +1,90 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.alternating-50-50-promo-sections {
+    margin-bottom: 40px;
+    @include content-wide;
+
+    @include breakpoint(tablet) {
+        margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        @include breakpoint(tablet) {
+         
+        }
+
+        .alternating-50-50-promo-sections__groups {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @include breakpoint(tablet) {
+                gap: 40px;
+            }
+        }
+        
+        .alternating-50-50-promo-sections__group {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            
+            @include breakpoint(tablet) {
+                flex-direction: row;
+                gap: 50px;
+            }
+
+            & > * { 
+                @include breakpoint(tablet) {
+                    width: 100%;
+                    max-width: 50%;
+                }
+            }
+
+            &:nth-of-type(even) {
+
+                @include breakpoint(tablet) {
+                    flex-direction: row-reverse;
+                }
+            }
+
+            .alternating-50-50-promo-sections__image {
+                img.alternating-50-50-promo-sections__image-image {
+                    @include border-radius(40px);
+                }
+            }
+
+            .alternating-50-50-promo-sections__content {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+
+                @include breakpoint(tablet) {
+                    gap: unset;
+                    justify-content: space-between;
+                }
+
+                .alternating-50-50-promo-sections__details {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 24px;
+                    
+                    .alternating-50-50-promo-sections__links {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 17px;
+
+                        @include breakpoint(tablet) {
+                            flex-direction: row;
+                        }
+                    }
+                }                
+            }
+        }
+    }
+
+}

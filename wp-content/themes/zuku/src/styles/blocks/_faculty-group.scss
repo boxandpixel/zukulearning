@@ -1,0 +1,249 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.faculty-group {
+    margin-bottom: 48px;
+    @include content-wide;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+
+        .faculty-group__header {
+            text-align: center;
+        }
+        
+        .faculty-group__group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            
+
+            @include breakpoint(tablet) {
+                flex-direction: row;
+                align-items: unset;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .faculty-member {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                width: 250px;
+                max-width: 100%;                
+                min-height: 350px; // Optional: Set a consistent minimum height for each member
+                
+
+                @include breakpoint(tablet) {
+                    margin-left: 20px;
+                    margin-right: 20px;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                button {
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                }
+                .faculty-member__image {
+                    width: 100%;
+                    aspect-ratio: 1 / 1; // Ensures square aspect ratio
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover; // Ensures images cover the container properly
+                        @include border-radius(30px);
+                        display: block;
+                    }
+                }
+
+                .faculty-member__summary {
+                    min-height: 80px; // Optional: Set a minimum height for consistency in text block size
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    text-align: left;
+
+                    .faculty-member__summary-name {
+                        margin: 10px 0;
+                        color: color(black);
+                    }
+
+                    .faculty-member__summary-title {
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.faculty-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; // Align modal to top
+    overflow-y: auto; // Enable scrolling for long content
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 4;
+  
+    &[hidden] {
+      display: none;
+    }
+  
+    &__content {
+        background: white;
+        margin-top: 5vh; // Add spacing from the top
+        padding: 0 23px 54px;
+        @include border-radius(40px);
+        max-width: 1016px;
+        width: 90%;
+        position: relative;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        transform: none; // No vertical shift now
+        max-height: 90vh;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        box-shadow: 0px 4px 40px 0px rgba(18, 10, 5, 0.25);
+        position: relative;
+
+        @include breakpoint(tablet) {
+            padding: 0 60px 60px;
+        }
+    
+        &.visible {
+            opacity: 1;
+        }
+
+        .faculty-modal__utility {
+            position: sticky;
+            top: 33px;
+            display: flex;
+            justify-content: flex-end;
+
+            @include breakpoint(tablet) {
+                top: 34px;
+                margin-right: -25px;
+            }
+        }
+
+        .faculty-modal__close {
+            text-indent: -9999rem;
+            border: none;
+            background-color: transparent;
+            @include close-icon;           
+            
+            &.sr-only {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                padding: 0;
+                border: 0;
+                clip: rect(0, 0, 0, 0);
+                clip-path: inset(50%);
+                white-space: nowrap;
+            }            
+        }
+
+        .faculty-modal__body {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;   
+            padding-top: calc(54px - 14px);
+
+            @include breakpoint(tablet) {
+                padding-top: calc(60px - 14px);
+            }
+            
+            .faculty-modal__header {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+        
+                @include breakpoint(tablet) {
+                    flex-direction: row;
+                    gap: 32px;
+                    align-items: flex-end;
+                }
+        
+                .faculty-modal__header-image {
+                                    
+                    @include breakpoint(tablet) {
+                        flex-basis: 232px;
+                        flex-shrink: 0;
+                    }
+                    
+
+                    img {
+                        max-width: 180px;
+                        // @include border-radius(30px);
+
+                        @include breakpoint(tablet) {
+                            max-width: 232px;
+                        }
+                    }
+                }
+        
+                .faculty-modal__header-summary {
+                    flex-grow: 1;
+                    width: auto;
+                    max-width: 530px;
+                }
+            }
+        
+            .faculty-modal__education {
+                background-color: color(cream);
+                padding: 24px;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                @include border-radius(30px);
+        
+                @include breakpoint(tablet) {
+                    padding: 30px 40px;
+                }
+
+            }
+        
+            .faculty-modal__biography {
+                .faculty-modal__biography-items {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 20px;
+
+                    .faculty-modal__biography-item {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }                
+                }
+                
+            }        
+        }
+
+
+    }
+  
+    &__overlay {
+      position: fixed; // Cover the full screen for clicking outside
+      top: 0; left: 0; right: 0; bottom: 0;
+    }
+  }
+  
+
+
+

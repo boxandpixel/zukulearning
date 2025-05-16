@@ -1,0 +1,274 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.product-features-grid {
+    margin-bottom: 40px;
+    @include content-wide;
+    // width: 1150px;
+
+    @include breakpoint(tablet) {
+        margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @include breakpoint(tablet) {
+            gap: 40px;     
+        }  
+        
+        .product-features-grid__header {
+            text-align: center;
+        }
+        
+        .product-features-grid__cards {
+            display: grid;
+            gap: 22px;
+            // padding: 1rem;
+            grid-template-columns: 1fr;
+
+            @include breakpoint(tablet) {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-areas:
+                  "real-exam visual pass"
+                  "real-exam build multi"
+                  "measure learn multi";
+                  grid-auto-rows: 190px;       
+                  gap: 20px;         
+            }
+
+            &.product-features-grid__cards-color--cream {
+                .grid-item {
+                    background-color: color(cream);
+                }
+            }
+
+            &.product-features-grid__cards-color--light-blue {
+                .grid-item {
+                    background-color: color(skyBlue);
+                }
+            }
+            
+            &.product-features-grid__cards-color--light-coral {
+                .grid-item {
+                    background-color: color(lightCoral);
+                }
+            }            
+         
+          
+          .grid-item {
+            // background-color: #cfefff;
+            padding: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+            @include border-radius(30px);
+
+            @include breakpoint(tablet) {
+                max-width: 394px;
+            }
+
+            &:not(.grid-item--image) {
+                height: 165px;
+
+                @include breakpoint(tablet) {
+                    height: unset;
+                }
+            }
+
+            &.grid-item--image {
+                position: relative;
+                min-height: 240px; /* or use height: 240px if you want fixed */
+                grid-row: span 1;
+
+                &:before {
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    z-index: 1;
+                    content: "";
+                    background: rgba(black, 0.5);
+                }
+                background-size: cover;
+
+                & > * {
+                    position: relative;
+                    z-index: 2;
+                    color: white;
+                }
+            }
+
+            &:nth-child(1) {
+                order: 1;
+
+                @include breakpoint(tablet) {
+                    grid-area: real-exam;
+                    order: 0;
+                    grid-row: span 2;
+                }
+            }
+
+            &:nth-child(2) {
+                order: 3;
+                @include breakpoint(tablet) {
+                    order: unset;
+                    grid-area: visual;
+                }
+            }
+
+            &:nth-child(3) {
+                order: 6;
+                @include breakpoint(tablet) {
+                    order: unset;
+                    grid-area: pass;
+                }
+            }   
+            
+            &:nth-child(4) {
+                order: 4;
+                @include breakpoint(tablet) {
+                    order: unset;
+                    grid-area: build;
+                }
+            }            
+
+            &:nth-child(5) {
+                order: 99;
+
+                @include breakpoint(tablet) {
+                    grid-area: multi;
+                    order: 0;  
+                    grid-row: span 2;                    
+                }
+            }
+
+            &:nth-child(6) {
+                order: 2;
+                @include breakpoint(tablet) {
+                    grid-area: measure;
+                }
+            }   
+            
+            &:nth-child(7) {
+                order: 5;
+                @include breakpoint(tablet) {
+                    order: unset;
+                    grid-area: learn;
+                }
+            }               
+          }
+        }
+          
+          /* Large image blocks */
+        //   .large-image {
+        //     background-size: cover;
+        //     background-position: center;
+        //     color: white;
+        //     font-weight: bold;
+        //     font-size: 1.2rem;
+        //     display: flex;
+        //     align-items: flex-end;
+        //     min-height: 200px;
+        //     padding: 1rem;
+        //   }
+
+        //   .grid-item:nth-child(1) {
+        //     order: -1;
+        //   }
+
+        //   .grid-item:nth-child(2) {
+        //     order: 1;
+        //   }
+
+        //   .grid-item:nth-child(3) {
+        //     order: 2;
+        //   }
+
+        //   .grid-item:nth-child(4) {
+        //     order: 4;
+        //   }          
+          
+        //   .grid-item:nth-child(5) {
+        //     order: 99;
+        //   }
+
+        //   .grid-item:nth-child(6) {
+        //     order: 5;
+        //   }
+
+        //   .grid-item:nth-child(7) {
+        //     order: 6;
+        //   }          
+          
+
+        //   #real-exam {
+        //     background-image: url('real-exam.jpg'); /* replace with actual path */
+        //     order: -1; /* Appear first on mobile */
+        //   }
+          
+        //   #multi-language {
+        //     background-image: url('multi-language.jpg'); /* replace with actual path */
+        //     order: 99; /* Appear last on mobile */
+        //   }
+          
+          /* Desktop layout */
+          @media (min-width: 768px) {
+            // .product-features-grid__cards {
+            //   grid-template-columns: repeat(3, 1fr);
+            //   grid-template-areas:
+            //     "real-exam visual pass"
+            //     "real-exam build multi"
+            //     "measure learn multi";
+            //     grid-auto-rows: 190px;
+            // }
+
+            // .grid-item {
+            //     padding: 30px;
+            // }
+          
+            // .grid-item:nth-child(1) {
+            //     grid-area: real-exam;
+            //     order: 0;
+            //     grid-row: span 2;
+            // }
+
+            // .grid-item:nth-child(2) {
+            //   grid-area: visual;
+            // }
+            // .grid-item:nth-child(3) {
+            //   grid-area: pass;
+            // }
+            // .grid-item:nth-child(4) {
+            //   grid-area: build;
+            // }
+
+            // .grid-item:nth-child(5) {
+            //     grid-area: multi;
+            //     order: 0;  
+            //     grid-row: span 2;
+            // }
+          
+            // #multi-language {
+            //   grid-area: multi;
+            //   order: 0;
+            // }
+          
+            // .grid-item:nth-child(6) {
+            //   grid-area: measure;
+            // }
+            // .grid-item:nth-child(7) {
+            //   grid-area: learn;
+            // }
+          }
+                            
+        
+    }
+
+}

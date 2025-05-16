@@ -1,0 +1,40 @@
+// _pills
+
+@use 'sass:map';
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+  border-radius: 999px;
+  cursor: pointer;
+
+  @include apply-type(caption);
+
+  &.pill--continuing-education {
+    background-color: color(salmonLight);
+  }
+
+  &.pill--test-prep {
+    background-color: rgba(color(skyBlue),.6);
+  }  
+
+  &.pill--tag {
+    background-color: color(cream);
+  }
+
+  &.pill--product {
+    background-color: white;
+  }
+}
+
+body.product-cat-test-prep {
+  .pill {
+    background-color: rgba(color(skyBlue),.6);
+  }
+}

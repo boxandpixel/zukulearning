@@ -1,0 +1,139 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+
+.image-with-stats-hero {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include breakpoint(tablet) {
+        padding-top: 80px;
+        margin-bottom: 80px;
+    }
+
+    .container {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        @include breakpoint(tablet) {
+            padding-left: unset;
+            padding-right: unset;
+        }
+
+        .image-with-stats-hero__header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 40px;
+            @include content-wide;
+
+            @include breakpoint(tablet) {
+                margin-bottom: 56px;
+            }
+
+            .image-with-stats-hero__eyebrow {
+                margin-bottom: 8px;
+            }
+
+            .image-with-stats-hero__heading {
+                margin-bottom: 16px;
+            }
+
+            .image-with-stats-hero__description {
+                width: 100%;
+                max-width: 902px;
+                margin-bottom: 32px;
+                margin-left: auto;
+                margin-right: auto;
+            }   
+            
+        }
+
+        .image-with-stats-hero__group {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+
+            @include breakpoint(tablet) {
+                // gap: 22px;
+                position: relative;
+            }
+
+            .image-with-stats-hero__stats-image {
+                aspect-ratio: 340 / 340;
+                position: relative;
+                background-image: center center;
+                background-size: auto 100%;
+                background-position: center center;
+                background-repeat: no-repeat;
+                overflow: hidden;
+                @include border-radius(40px);
+
+                @include breakpoint(tablet) {
+                    background-size: cover;
+                    width: 100%;
+                    aspect-ratio: 1222 / 408;
+                }
+
+                &::before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    content: "";
+                    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+                    overflow: hidden;
+                    @include border-radius(40px);
+
+                    @include breakpoint(tablet) {
+                        // border-radius: unset;
+                    }
+                }                
+
+            }
+
+            .image-with-stats-hero__stats-group {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+
+                @include breakpoint(tablet) {
+                    position: absolute;
+                    width: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    bottom: 46px;
+                    flex-direction: row;
+                    justify-content: center;
+                    padding-left: 60px;
+                    padding-right: 60px;
+                    gap: 138px;
+                }
+
+                .image-with-stats-hero__stat {
+                    width: 100%;
+                    max-width: 286px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+
+                    @include breakpoint(tablet) {
+                        color: white;
+                    }
+
+                    h1 {
+                        @include breakpoint(tablet) {
+                            color: white;
+                        }
+                    }
+                }
+            }
+
+        }
+     
+    }
+}

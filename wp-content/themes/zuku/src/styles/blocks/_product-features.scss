@@ -1,0 +1,203 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.product-features {
+    margin-bottom: 40px;
+    @include content-wide;
+    // width: 1150px;
+
+    @include breakpoint(tablet) {
+        margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @include breakpoint(tablet) {
+            gap: unset;           
+        }    
+        
+        .product-features__header {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            @include breakpoint(tablet) {
+                max-width: 500px;
+            }
+        }
+        
+        .product-features__table {
+            &.product-features__table--desktop {
+                display: none;
+                @include breakpoint(tablet) {
+                    display: block;
+                    table-layout: auto;
+                    border-collapse: collapse; /* removes spacing between borders */
+                
+                    thead {
+                        display: block;
+                        width: 100%;   
+
+                        th {
+                            font-weight: bold !important;
+                            @include apply-type(heading-sm-uniform);
+                        }
+
+                        th:nth-child(2) {
+                            position: relative;
+                            left: -1px;
+                            padding: 16px;
+                            @include border-radius__top-left;
+                            @include border-radius__top-right;
+                        }
+                    }
+
+                    tbody {
+                        display: block;
+                        width: 100%;
+                        border: solid 1px color(navy);
+                        @include border-radius(30px);
+
+                        td {
+                            border-bottom: solid 1px #ccc;
+
+                            &:nth-child(2),
+                            &:nth-child(3) {
+                                @include apply-type(eyebrow);
+                            }
+
+                        }                            
+
+                        tr {
+                            &:last-child {
+                                td {
+                                    border-bottom: unset;
+                                }
+                            }
+                        }
+                    }
+
+                    tr {
+                        display: flex;
+                        justify-content: flex-end;
+                        width: 100%;
+                    }
+
+                    th,td {
+                        flex-grow: 1;  /* Allow columns to grow */
+                        padding-top: 12px;
+                        padding-bottom: 12px;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    th:nth-child(3),
+                    td:nth-child(3) {
+                        flex-grow: 0;
+                        width: 252px; /* fixed width */
+                        text-align: center;
+                        justify-content: center;
+                    }
+
+                    th:nth-child(2),
+                    td:nth-child(2) {
+                        background-color: rgba(color(skyBlue),0.4);
+                        flex-grow: 0;
+                        width: 188px; /* fixed width */
+                        text-align: center;
+                        justify-content: center;
+                    }                    
+
+                    th:nth-child(1),
+                    td:nth-child(1) {
+                        text-align: left;
+                        padding-left: 47px;
+                        flex-grow: 2;
+                        width: auto; /* flexible */
+                    }                    
+                }
+            }
+
+            &.product-features__table--mobile {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                @include breakpoint(tablet) {
+                    display: none;
+                }
+
+                h3.product-features__heading {
+                    font-weight: bold !important;
+                    @include apply-type(heading-sm-uniform);
+                }
+
+                .product-features__table-mobile {
+                    width: 100%;
+                    padding: 24px 16px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 12px;
+                    @include border-radius(30px);
+
+                    &.product-features__table-mobile--premium {
+                        background-color: rgba(color(skyblue), .4)
+                    }
+
+                    &.product-features__table-mobile--standard {
+                        border: solid 1px black;
+                    }
+
+                    .product-features__mobile-row {
+                        .product-features__featured-item {
+                            display: flex;
+                            gap: 8px;
+                            align-items: center;
+
+                            .product-features__text {
+                                transform: translateY(-2px);
+
+                                &.product-features__text--notIncluded {
+                                    color: rgba(black, 0.5);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }  
+
+            .product-features-included {
+                display: block;
+                text-indent: -9999rem;
+                width: 20px;
+                height: 20px;
+
+                @include breakpoint(tablet) {
+                    width: 26px;
+                    height: 26px;
+                }
+
+                &.product-features-included__included {
+                    @include check-circle--filled(20px);
+
+                    @include breakpoint(tablet) {
+                        @include check-circle--filled(26px);
+                    }  
+                }
+
+                &.product-features-included__notIncluded {
+                    @include check-circle--unfilled(19px);
+
+                    @include breakpoint(tablet) {
+                        @include check-circle--unfilled(26px);
+                    }                      
+                }                
+            }
+                   
+        }
+    }
+
+}

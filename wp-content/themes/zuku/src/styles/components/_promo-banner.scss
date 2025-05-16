@@ -1,0 +1,12 @@
+@use '../abstracts/colors.functions' as *;
+
+.promo-banner {
+    background-color: color(black);
+    display: flex;
+    justify-content: center;
+    padding: 5px 0;
+
+    .promo-banner__text {
+        color: white;
+    }
+}

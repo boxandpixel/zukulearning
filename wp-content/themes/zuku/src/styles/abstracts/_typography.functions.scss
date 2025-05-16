@@ -1,0 +1,7 @@
+@use 'sass:map';
+@use 'typography.map' as *;
+
+@function get-type($key) {
+  @return map.get($typography, $key);
+}
+  

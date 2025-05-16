@@ -1,0 +1,45 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.marketing-announcement {
+    margin-bottom: 40px;
+    @include content-inner;
+
+    @include breakpoint(tablet) {
+        margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: color(cream);
+        padding: 18px;
+        @include border-radius__top-left;
+        @include border-radius__top-right;
+        @include border-radius__bottom-right;
+        @include border-radius__bottom-left;
+
+        @include breakpoint(tablet) {
+            flex-direction: row;
+            justify-content: space-between;
+            padding-top: 28px;
+            padding-right: 40px;
+            padding-bottom: 28px;
+            padding-left: 50px;            
+        }        
+    }
+
+
+
+
+
+    .marketing-announcement__text-content {
+
+    }
+
+    .marketing-announcement__link {
+
+    }
+}

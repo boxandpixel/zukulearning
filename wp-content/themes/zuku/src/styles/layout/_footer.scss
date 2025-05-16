@@ -1,0 +1,168 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+footer.site-footer {
+    background-color: color(cream);
+    // padding: 79px 20px 0;
+    padding: 79px 0 0;
+    position: relative;
+    margin-top: -30px; // So last item goes under footer on certain pages
+    @include border-radius__top-left;
+    @include border-radius__top-right; 
+
+
+    .footer-content {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 46px;
+        padding-bottom: 40px;
+        @include content-wide;
+        
+        @include breakpoint(tablet) {
+            flex-direction: row;
+            gap: 55px;
+            padding-bottom: 48px;
+        }
+
+        &:after {
+            position: absolute;
+            bottom: 0;
+            content: "";
+            width: calc(100% - 48px);
+            // transform: translateX(24px);
+            height: 1px;
+            background-color: rgba(color(black), 0.4);
+            display: block;
+        }
+
+
+        .footer-branding {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+
+
+            @include breakpoint(tablet) {
+                display: flex;
+                justify-content: space-between;                
+                flex: 0 0 200px; 
+                flex-direction: column;
+                justify-content: flex-start;
+                row-gap: 46px;
+                align-items: flex-start;
+            }
+
+            .footer-branding__logo {
+                @include breakpoint(tablet) {
+                    margin-left: 10px;
+                }
+            }
+
+            .footer-branding__social {
+                display: flex;
+                gap: 10px;
+            }
+        }
+
+        .footer-menus {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            row-gap: 24px;
+
+            @include breakpoint(tablet) {
+                gap: 55px;
+                flex: 1;
+                grid-template-columns: repeat(4, 1fr);
+                width: auto;
+            }
+
+            a {
+                @include apply-typography(body-link);
+            }
+
+            .footer-menus__menu {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                @include breakpoint(tablet) {
+                    gap: 26px;
+                }
+
+                .footer-menu-title {
+                    color: rgba(color(black), 0.4);
+                }
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+            }
+
+
+            .footer-menus__menu--resources {
+                .footer-resources-menu__contact-us {
+                    display: none;
+    
+                    @include breakpoint(tablet) {
+                        display: block;
+                    }
+                }
+            }
+
+
+            .footer-menus__contact.show-on-mobile {
+                grid-column: 1 / -1; // Span full width in the grid
+                margin-top: 16px; // Adjust spacing as needed
+                margin-bottom: 40px;
+                display: block;
+        
+                @include breakpoint(tablet) {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .menu-footer-utility-menu-container {
+        margin: 18px 0 65px;
+        @include content-wide;
+
+        #footer-utility-menu {
+            display: flex;
+            justify-content: space-between;
+
+            li > a {
+                color: color(black);
+                opacity: 40%;
+                @include apply-type(footer-utility-menu);
+            }
+        }
+        
+    }
+    
+    .footer-content__zuku-logo {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        display: block;
+        @include content-wide;
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+            
+            @include breakpoint(tablet) {
+                max-height: calc(100% - 30px); /* Adjust clip depth here */
+                margin-bottom: -30px; /* Visually tuck under footer or next element */                
+            }
+        }
+    }
+
+    
+}

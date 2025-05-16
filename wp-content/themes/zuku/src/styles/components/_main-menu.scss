@@ -1,0 +1,632 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+body.menu-is-open {
+  overflow: hidden;
+}
+
+// body.menu-is-open::before {
+//   content: '';
+//   position: fixed;
+//   inset: 0;
+//   z-index: 999;
+// }
+
+.site-header__menu-toggle {
+    width: 29px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url('data:image/svg+xml,<%3Fxml version="1.0" encoding="UTF-8"%3F><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 19.5"><defs><style> .cls-1 { fill: none; stroke: %23120a05; stroke-linecap: round; stroke-width: 1.5px; } </style></defs><g id="Frame_15369" data-name="Frame 15369"><g id="Group_7055" data-name="Group 7055"><line id="Line_15" data-name="Line 15" class="cls-1" x1=".75" y1=".75" x2="29.25" y2=".75"/><line id="Line_16" data-name="Line 16" class="cls-1" x1=".75" y1="9.75" x2="29.25" y2="9.75"/><line id="Line_17" data-name="Line 17" class="cls-1" x1=".75" y1="18.75" x2="29.25" y2="18.75"/></g></g></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+    text-indent: -9999rem;
+    background-color: transparent;
+    border: none;
+
+    @include breakpoint(tablet) {
+        display: none;
+    }
+
+    &.is-open {
+        background-image: url('data:image/svg+xml,<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 21L11 11M11 11L21 1M11 11L1 1M11 11L21 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    }
+}
+
+.menu-main-menu-container {
+    ul#main-menu {
+        display: none;
+
+        &.is-open {
+            @include breakpoint(mobile) {
+                margin-top: 53px;
+                display: flex;
+                flex-direction: column;
+                gap: 28px;            
+            }
+        }
+
+        @include breakpoint(tablet) {
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-start;
+            gap: 16px;
+            padding-top: 10px;
+            padding-bottom: 10px;             
+            gap: 9px;
+            margin-top: unset;
+        }
+
+        li {
+
+            &.menu-item {
+
+                & > a {
+                    border: solid 1.5px transparent;
+                }
+
+                // @media (hover: hover) and (pointer: fine) {
+                    &:focus-within > a,
+                    &:hover > a,
+                    &:focus > a,
+                    &:active > a {
+
+                        @include breakpoint(tablet) {
+                            background-color: color(navy);
+                            border: solid 1.5px color(navy);
+                            border-radius: 999px;  
+                            color: white;
+                            transition: all 300ms linear;   
+                        }
+
+                    }
+                // }                
+
+                // &:hover > a {
+                //         background-color: color(navy);
+                //         border-radius: 999px;  
+                //         color: white;
+                //         transition: background-color 300ms linear;        
+                // }
+
+                & > a {
+                    display: inline-block;
+                    position: relative;
+                    @include apply-type(heading-sm-uniform);
+
+                    @include breakpoint(tablet) {
+                        display: block;
+                        padding: 10px 20px;
+                        @include apply-type(body);
+                        
+                    }                    
+                }
+            }
+
+            &.current-menu-item,
+            &.current-menu-ancestor {
+                & > a {                
+                    border: solid 1.5px black;
+                    border-radius: 999px;
+                }
+            }
+
+            &:has(.mega-menu) {
+                // @media (hover: hover) and (pointer: fine) {
+                    &:focus-within,
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        & > a {
+
+                            @include breakpoint(tablet) {
+                                background-color: color(navy);
+                                border-radius: 999px;
+                                color: white;                                
+                            }
+
+
+                            &::after {
+
+                                @include breakpoint(tablet) {
+                                    @include main-menu-arrow(white);
+                                    transform: rotate(180deg)
+                                }
+                                
+                            }
+                        }
+                    }
+                // }
+
+                & > a {
+
+                    @include breakpoint(tablet) {
+                        display: flex;
+                        gap: 6px;
+                        align-items: center;                    
+                    }
+
+                    &::after {
+                        @include breakpoint(mobile) {
+                            content: "";
+                            position: absolute;
+                            right: -12px;
+                            top: 50%;
+                            transform: translateY(-50%) rotate(-90deg);
+                            display: block;
+                            width: 8px;
+                            height: 4px;
+                            @include main-menu-arrow(color(navy));  
+                        }                      
+
+                        @include breakpoint(tablet) {
+                            content: "";
+                            display: block;
+                            width: 8px;
+                            height: 4px;
+                            @include main-menu-arrow(color(navy));
+                        }
+                    }    
+                    
+                    &:hover {
+                        @include breakpoint(tablet) {
+                            background-color: color(navy);
+                            border-radius: 999px;
+                            color: white;
+                        }
+
+
+                        &::after {
+                            @include main-menu-arrow(white);
+                            transform: rotate(180deg)
+                        }
+                    }
+                }
+
+                &:hover {
+                    .mega-menu {
+                        // transition: opacity 3ms ease-in-out;
+
+                        &:after {
+                            opacity: 1;
+                        }
+
+                        @include breakpoint(tablet) {
+                            opacity: 1;
+                            display: flex;
+                        }
+                    }
+                }
+            }
+
+            .mega-menu {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                justify-content: flex-start;
+
+                &:after {
+                    @include breakpoint(tablet) {
+                        position: absolute;
+                        bottom: -56px;
+                        left: calc(((100vw - 1270px) / 2) * -1);
+                        width: 100vw;
+                        height: 56px;
+                        background: linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.15) 100%);
+                        content: "";
+                        opacity: 0;
+
+                    }
+                }
+                
+                
+                @include breakpoint(tablet) {
+                    opacity: 0;
+                    flex-direction: row;
+                    gap: 40px;
+                    position: absolute;
+                    top: calc(89.9px - 6px); // 89.9 in design - 12px padding offset
+                    left: 50%;
+                    padding-top: calc(56px + 6px); // 56px in design + 12px top offset.
+                    padding-bottom: 53px;
+                    transform: translateX(-50%);
+                    width: 100%;
+                    background: white;
+                    z-index: 4;
+                    margin-left: auto;
+                    margin-right: auto;
+
+                    @include content-wide;
+
+                    &:before {
+                        position: absolute;
+                        top: 0;
+                        left: calc(((100vw - 1270px) / 2) * -1);
+                        width: 100vw;
+                        height: 100%;
+                        background-color: white;
+                        z-index: -1;
+                        content: "";
+                    }
+                }
+
+                .mega-menu__breadcrumb {
+                    display: inline-flex;
+                    background: none;
+                    border: none;
+                    padding-left: 30px;
+                    position: relative;
+                    flex-grow: 0;
+                    width: auto;
+                    @include apply-type(body);
+
+                    &:after {
+                        @include breakpoint(mobile) {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: 0;
+                            transform: translateY(-50%);
+                            border-radius: 999px;
+                            border: solid 1px color(navy);
+                            @include icon-arrow-size--small(color(navy));
+                        }
+                    }
+                    
+
+                    @include breakpoint(tablet) {
+                        display: none;
+                    }
+                }
+
+                .mega-menu__details {
+                    width: 100%;
+                    max-width: 290px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+
+                    @include breakpoint(tablet) {
+                        gap: 22px;
+                    }
+
+                    .mega-menu__details-header {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+
+                        @include breakpoint(tablet) {
+                            gap: 16px;
+                        }
+                    }
+
+                    .mega-menu__details-text-links {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 12px;
+
+                        .mega-menu__details-text-link {
+                            padding-left: 29px;
+                            position: relative;
+                            @include apply-type(body);
+
+                            &:before {
+                                content: "";
+                                position: absolute;
+                                display: block;
+                                top: 50%;
+                                left: 0;
+                                transform: translateY(-50%) rotate(180deg);
+                                border: solid 1px color(black);
+                                border-radius: 999px;
+
+                                @include icon-arrow-size--small(color(black));
+                                
+                            }
+                        }                                    
+                    }
+                }
+
+                .mega-menu__cards {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+
+                    @include breakpoint(tablet) {
+                        flex-direction: row;
+                        gap: 37px;
+                    }   
+                    
+                    .mega-menu__card-group {
+                        display: block;
+                        width: 100%;
+                        position: relative;     
+                        
+                        
+                        @include breakpoint(tablet) {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 15px;
+                            max-width: 272px;
+                        }
+
+
+                        .mega-menu__card {
+                            width: 100%;
+                            position: relative;
+                            aspect-ratio: 342 / 126;
+                            @include border-radius(18px);
+
+                            @include breakpoint(tablet) {
+                                max-width: 272px;
+                                transition: opacity 0.3s ease-in-out;
+                                aspect-ratio: 272 / 267;        
+                                @include border-radius(30px);                                
+                            }
+
+                            &.mega-menu__card--test-prep {
+                                background-color: color(skyBlue);
+                                
+
+                                    &:before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        z-index: 2;
+                                        opacity: 1;
+                                        transition: opacity 0.3s ease-in-out;
+                                        background: linear-gradient(to bottom, hsla(197, 44%, 72%, 0), hsla(197, 44%, 72%, 1));
+                                        @include border-radius(18px);
+
+                                        @include breakpoint(tablet) {
+                                            opacity: 0;
+                                            @include border-radius(30px);
+                                        }
+                                    }                                            
+
+                                &:hover {
+                                    &:before {
+                                        @include breakpoint(tablet) {
+                                            opacity: 1;
+                                        }
+                                        
+                                    }
+                                }      
+                            }
+
+                            &.mega-menu__card--ce {
+                                background-color: color(lightCoral);
+
+                                    &:before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0;
+                                        left: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        z-index: 2;
+                                        opacity: 1;
+                                        transition: opacity 0.3s ease-in-out;
+                                        background: linear-gradient(180deg, rgba(255, 159, 145, 0.00) 33.71%, #FF9F91 90.96%);
+                                        @include border-radius(18px);
+
+                                        @include breakpoint(tablet) {
+                                            opacity: 0;
+                                            @include border-radius(30px);
+                                        }
+                                    }                                            
+
+                                &:hover {
+                                    &:before {
+
+                                        @include breakpoint(tablet) {
+                                            opacity: 1;
+                                        }
+                                        
+                                    }
+                                }                                          
+                            }
+
+                            .mega-menu__card-arrow {
+                                position: absolute;
+                                top: 12px;
+                                right: 12px;
+                                background-color: color(navy);
+                                border-radius: 999px;
+                                transition: opacity 0.3s ease-in-out;
+                                opacity: 0;
+                                z-index: 5;
+                                @include icon-arrow-size--medium(white);
+                                
+                            }                                     
+
+                            &:hover {
+                                .mega-menu__card-arrow {
+                                    position: absolute;
+                                    top: 12px;
+                                    right: 12px;
+                                    background-color: color(navy);
+                                    border-radius: 999px;
+                                    transition: opacity 0.3s ease-in-out;
+                                    opacity: 1;
+                                    @include icon-arrow-size--medium(white);
+                                    
+                                }  
+
+                                & + .mega-menu__card-title {
+                                    h3 {
+                                        text-decoration: underline;
+                                    }
+                                }
+                            }
+
+                            &.mega-menu__card--product {
+                                .mega-menu__card-image {
+                                    background-size: 35%;
+                                    background-position: right 15px;
+
+                                    @include breakpoint(tablet) {
+                                        background-size: cover; // may need to change this
+                                        background-position: center bottom;  
+                                    }
+                                }
+                                
+                            }
+
+                            &.mega-menu__card--page {
+                                background-color: color(cream);
+
+                                @include breakpoint(tablet) {
+                                    background-color: unset;
+                                }
+                                .mega-menu__card-image {
+
+                                    @include breakpoint(mobile) {
+                                        width: 115px;
+                                        height: 115px;
+                                        @include border-radius(13px);
+                                        background-size: cover;
+                                        position: absolute;
+                                        right: 5px;
+                                        top: 50%;
+                                        transform: translateY(-50%);
+                                    }
+
+                                    @include breakpoint(tablet) {
+                                        background-size: cover;
+                                    }
+
+                                &:after {
+                                    content: "";
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    z-index: 4;
+                                    // background: linear-gradient(181deg, rgba(44, 67, 83, 0.00) 29.89%, rgba(44, 67, 83, 0.50) 64.54%), -123.401px 2.441px / 212.015% 83.534% no-repeat;                                       
+                                    background: linear-gradient(to bottom,hsla(205, 31%, 25%, 0), hsla(205, 31%, 25%, 0.5));
+                                    
+                                    opacity: 0;
+                                    transition: opacity 0.3s ease-in-out;
+                                    @include border-radius(30px);
+                                }                                
+
+                                &:hover {
+
+                                    &:after {
+                                        @include breakpoint(tablet) {
+                                            opacity: .5;
+                                        }
+                                    }
+                                }                                    
+
+                                }
+                            }
+
+                            .mega-menu__card-image {
+                                aspect-ratio: 342 / 126;
+                                background-repeat: no-repeat;
+                                position: relative;
+                                z-index: 3;
+                                @include border-radius(30px);
+
+
+                                @include breakpoint(tablet) {
+                                    transition: opacity 0.3s ease-in-out;
+                                    width: 100%;
+                                    max-width: 272px;                                    
+                                    aspect-ratio: 272 / 267;                                          
+                                }
+                            }
+
+                            .mega-menu-card__terms {
+                                position: absolute;
+                                left: 18px;
+                                bottom: 22px;
+                                z-index: 4;
+                                display: flex;
+                                gap: 8px;
+
+                                li.mega-menu-card__terms-term {
+                                    display: inline-block;
+                                    span {
+                                        display: inline-block;
+                                        // @include apply-type(caption);
+                                    }
+                                }
+                            }    
+                            
+
+                        }
+
+                        .mega-menu__card-title {
+                            position: absolute;
+                            top: 22px;
+                            left: 27px;
+                            z-index: 4;
+
+                            @include breakpoint(tablet) {
+                                position: unset;
+                                top: unset;
+                                left: unset;
+                            }
+                        }
+                        
+                    }                            
+                }                
+
+                @include breakpoint(tablet) {
+                    display: none;
+                }
+            }            
+        }
+
+        &:has(.mega-menu) {
+            @include breakpoint(mobile) {
+                position: relative;
+                // overflow-x: hidden;
+
+            }
+
+            .mega-menu {
+                @include breakpoint(mobile) {
+                    overflow-x: unset;
+                    position: fixed;
+                    top: 68px;
+                    left: 0; /* start off the right side of the parent */
+                    width: 100%; /* adjust as needed */
+                    // height: 100vh;
+                    overflow-y: auto;
+                    background: white;
+                    opacity: 1;
+                    transform: translateX(100%);
+                    visibility: hidden;
+                    transition: all 0.3s ease;
+                    z-index: 1000;    
+                    padding-left: 24px;
+                    padding-right: 24px;
+                    padding-top: 24px;
+                    padding-bottom: 24px;
+                    height: calc(100% - 68px);
+                                       
+                }
+            }
+        }
+
+        .has-mega-menu.is-open .mega-menu {
+            @include breakpoint(mobile) {
+                opacity: 1;
+                transform: translateX(0);
+                visibility: visible;    
+            }
+        
+        }
+    }
+}

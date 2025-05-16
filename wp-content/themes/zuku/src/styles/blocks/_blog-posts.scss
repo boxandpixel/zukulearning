@@ -1,0 +1,136 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.blog-posts {
+    background-color: white;
+    padding-top: 40px;
+    padding-bottom: calc(64px + $footer-margin-offset);
+    
+    // width: 1150px;
+
+    @include breakpoint(tablet) {
+        padding-top: 80px;
+        padding-bottom: 40px;
+        margin-bottom: calc(70px + $footer-margin-offset);
+    }
+
+    .container {
+        padding-top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        @include content-wide;
+
+        @include breakpoint(tablet) {
+            padding-top: 40px;
+            gap: 56px;
+        }
+
+        .blog-posts__header {
+            text-align: center;        
+        }
+
+        .blog-posts__group {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+
+            @include breakpoint(tablet) {
+                flex-direction: row;
+                gap: 45px;
+            }
+
+            .blog-posts__post {
+                position: relative;
+                overflow: hidden;
+
+                .blog-posts__post-image {
+                    position: relative;
+                    overflow: hidden;
+                    margin-bottom: 20px;
+
+                    &:before {
+                        content: "";
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border-radius: 30px;
+                        background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.4) 100%);
+                        @include border-radius__top-left;
+                        @include border-radius__top-right;
+                        @include border-radius__bottom-right;
+                        @include border-radius__bottom-left;
+                    }                    
+
+                    img {
+                        display: block;
+                        max-width: 100%;
+                        @include border-radius__top-left;
+                        @include border-radius__top-right;
+                        @include border-radius__bottom-right;
+                        @include border-radius__bottom-left;
+                    }
+                }
+
+                .blog-posts__post-categories {
+                    margin-bottom: 12px;
+
+                    ul {
+                        display: flex;
+                        gap: 8px;
+                    }
+                }
+
+                &:hover {
+
+                    .large-card-subheading {
+                        text-decoration: underline;
+                    }
+                    .blog-posts__card-arrow {
+
+                        @include breakpoint(tablet) {
+                            opacity: 1;
+                        }
+                        
+                    }
+                }
+
+                &:active {
+                    .blog-posts__card-arrow {
+                        background-color: white;
+                        @include icon-arrow-size--medium(color(navy));
+
+                        @include breakpoint(tablet) {
+                            @include icon-arrow-size--large(color(navy));
+                        }
+                    }
+                }
+                
+                .blog-posts__card-arrow {
+                    position: absolute;
+                    top: 12px;
+                    right: 12px;
+                    border: solid 1px white;
+                    content: "";
+                    opacity: 1;
+                    border-radius: 999px;
+                    transition: all 0.3s ease-in-out;
+                    z-index: 3;
+                    @include icon-arrow-size--medium(white);
+
+                    @include breakpoint(tablet) {
+                        opacity: 0;
+                        background-color: white;                        
+                        @include icon-arrow-size--large(color(navy));
+                    }
+                }
+            }
+
+        }
+     
+    }
+}

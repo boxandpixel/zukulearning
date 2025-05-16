@@ -1,0 +1,62 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.site-header__utility-menu {
+    display: none;
+    border-bottom: solid 1px color(navyLight);
+    
+    @include breakpoint(tablet) {
+        display: flex;
+    }
+
+    
+    .menu-header-utility-menu-container {
+        @include content-wide;
+    
+        ul#header-utility-menu {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 16px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+    
+            li {
+                a {
+                    display: block;
+                    @include apply-typography(header-utility-menu);
+                }
+            }
+        }
+    }
+}
+
+.site-header__utility-menu--mobile {
+
+    ul#header-utility-menu {
+        display: none;
+
+        &.is-open {
+            @include breakpoint(mobile) {
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+        }
+
+        @include breakpoint(tablet) {
+            display: none;
+        }
+    }
+
+}
+
+
+
+
+  
+
+
+
+

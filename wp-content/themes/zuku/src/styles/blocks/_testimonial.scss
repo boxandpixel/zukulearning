@@ -1,0 +1,93 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.testimonial {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include breakpoint(tablet) {
+        margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        // @include container-vertical-margin;
+
+        
+        .testimonial__content {
+            text-align: center;
+            width: 100%;
+            padding-left: 24px;
+            padding-right: 24px;
+            
+            @include breakpoint(tablet) {
+                max-width: calc(902px + 48px)
+            }
+        }
+
+        .testimonial__images-clip {
+            max-width: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+
+
+            .testimonial__images {
+                display: flex;
+                justify-content: center;
+                overflow: hidden;
+                gap: 12px;
+    
+                @include breakpoint(tablet) {
+                    gap: 22px;
+                }
+                .testimonial-images__image {
+                    flex: 0 0 140px;
+                    max-width: 100%;
+                    position: relative;
+    
+                    @include breakpoint(tablet) {
+                        flex: 0 0 259px;
+                    }
+    
+                    img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                        @include border-radius__top-left;
+                        @include border-radius__top-right;
+                        @include border-radius__bottom-right;
+                        @include border-radius__bottom-left;
+                    }
+    
+                    &:nth-child(1) {
+                        margin-top: 23px;
+                    }
+    
+                    &:nth-child(2) {
+                        margin-top: 65px;
+                    }
+    
+                    &:nth-child(3) {
+                        margin-top: 70px;
+                    }
+                    
+                    &:nth-child(4) {
+                        margin-top: 0;
+                    }
+                    
+                    &:nth-child(5) {
+                        margin-top: 84px;
+                    }                
+    
+                }
+            }            
+          }        
+
+
+    }
+}

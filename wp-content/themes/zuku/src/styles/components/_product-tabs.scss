@@ -1,0 +1,32 @@
+// _buttons
+
+@use 'sass:map';
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+
+.featured-product__tab--test-prep {
+    @include product-tab--test-prep(195px, 50px);
+}
+
+.featured-product__tab--ce {
+    @include product-tab--ce(195px, 50px);
+}
+
+body.product-cat-test-prep {
+    .product__product-tab {
+        position: absolute;
+        top: 0;
+        right: 46px;
+        background-size: 70%;
+        background-position: center calc(50% - 2px) !important;
+        @include product-tab--test-prep(158px, 40px);
+
+        @include breakpoint(tablet) {
+            background-size: unset;
+            @include product-tab--test-prep(195px, 50px);
+        }
+        
+    }
+}

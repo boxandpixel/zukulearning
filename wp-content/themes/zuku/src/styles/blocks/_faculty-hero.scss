@@ -1,0 +1,83 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.faculty-hero {
+    padding-top: 40px;
+    padding-bottom: 40px; 
+    
+    // width: 1150px;
+
+    @include breakpoint(tablet) {
+        padding-top: 80px;
+        padding-bottom: unset;
+        margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        @include content-wide;
+
+        @include breakpoint(tablet) {
+            gap: 56px;
+        }
+
+        .faculty-hero__header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            .faculty-hero__eyebrow {
+                margin-bottom: 8px;
+            }
+
+            .faculty-hero__heading {
+                margin-bottom: 16px;
+            }
+
+            .faculty-hero__description {
+                width: 100%;
+                max-width: 902px;
+                margin-bottom: 32px;
+                margin-left: auto;
+                margin-right: auto;
+            }            
+        }
+
+        .faculty-hero__group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            @include breakpoint(tablet) {
+                align-items: center;
+                flex-direction: row;
+            }
+
+            .faculty-hero__card {
+                background-color: color(salmonLight);
+                padding: 26px 30px;
+                position: relative;
+                aspect-ratio: 342 / 204;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                @include border-radius(30px);
+
+                @include breakpoint(tablet) {
+                    aspect-ratio: 394 / 236;
+                }
+
+                .faculty-hero__card-image {
+                    position: absolute;
+                    top: 26px;
+                    right: 30px;
+                }
+            }
+
+        }
+     
+    }
+}

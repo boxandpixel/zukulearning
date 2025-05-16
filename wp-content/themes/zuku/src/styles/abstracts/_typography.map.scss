@@ -1,0 +1,140 @@
+$typography: (
+  display-xxl: (
+    element: "h1.hero-headline",
+    desktop: (size: 6rem, line-height: 100%, letter-spacing: -0.02em), // -2%
+    mobile:  (size: 3.5rem, line-height: 100%, letter-spacing: -0.02em), // -2%
+    weight: 500
+  ),
+  heading-xxl: (
+    element: "h1",
+    desktop: (size: 5rem, line-height: 100%, letter-spacing: -0.02em), // -2%
+    mobile:  (size: 3.5rem, line-height: 100%, letter-spacing: -0.02em), // -2%
+    weight: 500
+  ),
+  heading-xl: (
+    element: "h2",
+    desktop: (size: 4rem, line-height: 110%, letter-spacing: 0em), // 0% 64px
+    mobile:  (size: 2.25rem, line-height: 120%, letter-spacing: -0.01em), // -1%
+    weight: 500
+  ),
+  heading-lg: (
+    element: "h3",
+    desktop: (size: 3rem, line-height: 110%, letter-spacing: 0em), // 0%
+    mobile:  (size: 1.75rem, line-height: 120%, letter-spacing: -0.01em), // -1%
+    weight: 500
+  ),
+  heading-md: (
+    element: "h4",
+    desktop: (size: 2.25rem, line-height: 120%, letter-spacing: -0.01em), // -1%
+    mobile:  (size: 1.75rem, line-height: 120%, letter-spacing: -0.01em), // -1%
+    weight: 500
+  ),
+  heading-sm: (
+    element: "h5",
+    desktop: (size: 1.75rem, line-height: 120%, letter-spacing: -0.01em), // -1%
+    mobile:  (size: 1.375rem, line-height: 120%, letter-spacing: 0em), // 0%
+    weight: 500
+  ),
+  heading-sm-uniform: (
+    element: ".heading-sm-uniform",
+    desktop: (size: 1.75rem, line-height: 120%, letter-spacing: -0.01em), // -1%
+    mobile:  (size: 1.75rem, line-height: 120%, letter-spacing: 0em), // 0%
+    weight: 500
+  ),  
+  heading-xs: (
+    element: ".heading-xs", // was h6
+    desktop: (size: 1.375rem, line-height: 120%, letter-spacing: 0em), // 22px
+    mobile:  (size: 1.375rem, line-height: 120%, letter-spacing: 0em), // 0%
+    weight: 500
+  ),
+  heading-xxs: (
+    element: ".large-card-subheading",
+    desktop: (size: 1.375rem, line-height: 120%, letter-spacing: 0em), // 0%
+    mobile:  (size: 1.125rem, line-height: 140%, letter-spacing: 0em), // 0%
+    weight: 500
+  ),
+  body: (
+    element: "p",
+    desktop: (size: 1rem, line-height: 140%, letter-spacing: 0em), // 0%
+    mobile:  (size: 1rem, line-height: 140%, letter-spacing: 0em), // 0%
+    weight: 400
+  ),
+  caption: (
+    element: ".caption",
+    desktop: (size: 0.625rem, line-height: 150%, letter-spacing: 0.08em), // 8%
+    mobile:  (size: 0.625rem, line-height: 150%, letter-spacing: 0.08em), // 8%
+    weight: 700,
+    text-transform: uppercase
+  ),
+  eyebrow: (
+    element: ".eyebrow",
+    desktop: (size: 1rem, line-height: 150%, letter-spacing: 0.19em), // 19%
+    mobile:  (size: 1rem, line-height: 150%, letter-spacing: 0.19em), // 19%
+    weight: 800
+  ),
+  button: (
+    element: ".button",
+    desktop: (size: 1rem, line-height: 140%, letter-spacing: 0em), // 0%
+    mobile:  (size: 1rem, line-height: 140%, letter-spacing: 0em), // 0%
+    weight: 500
+  ),
+  body-link: (
+    element: "a",
+    desktop: (size: 1rem, line-height: 140%, letter-spacing: 0%),
+    mobile:  (size: 1rem, line-height: 140%, letter-spacing: 0%),
+    weight: 400
+  ),
+  main-menu: (
+    element: "a",
+    desktop: (size: 1rem, line-height: 110%, letter-spacing: 0%),
+    mobile:  (size: 1rem, line-height: 110%, letter-spacing: 0%),
+    weight: 500
+  ),  
+  header-utility-menu: (
+    element: "a",
+    desktop: (size: .75rem, line-height: 110%, letter-spacing: 0%),
+    mobile:  (size: .75rem, line-height: 110%, letter-spacing: 0%),
+    weight: 500
+  ),  
+  overlay-heading: (
+    element: ".overlay-heading",
+    desktop: (size: 1.125rem, line-height: 120%, letter-spacing: 0%),
+    mobile:  (size: 0.625rem, line-height: 120%, letter-spacing: 0%),
+    weight: 500
+  ),  
+  overlay-list-items: (
+    element: ".overlay-list-items",
+    desktop: (size: 0.8125rem, line-height: 140%, letter-spacing: 0%),
+    mobile:  (size: 0.4375rem, line-height: 140%, letter-spacing: 0%),
+    weight: 400
+  ),  
+  heading-black: (
+    element: ".heading--black",
+    weight: 800
+  ),
+  table-features: (
+    element: ".table-features",
+    desktop: (size: 1.375rem, line-height: 120%, letter-spacing: 0%),
+    mobile:  (size: 1rem, line-height: 120%, letter-spacing: 0%),
+    weight: 400
+  ),
+  stat-uniform: (
+    element: ".stat-uniform",
+    desktop: (size: 1.125rem, line-height: 120%, letter-spacing: 0%),
+    mobile:  (size: 1.125rem, line-height: 120%, letter-spacing: 0%),
+    weight: 400
+  ),
+  footer-utility-menu: (
+    element: ".footer-utility-menu",
+    desktop: (size: 0.875rem, line-height: 110%, letter-spacing: 0%),
+    mobile:  (size: 0.875rem, line-height: 110%, letter-spacing: 0%),
+    weight: 400
+  ),
+  heading-mega-menu: (
+    element: ".heading-mega-menu",
+    desktop: (size: 3rem, line-height: 110%, letter-spacing: 0%),
+    mobile:  (size: 1.75rem, line-height: 110%, letter-spacing: 0%),
+    weight: 500
+  )
+
+);

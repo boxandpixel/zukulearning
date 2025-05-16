@@ -92,5 +92,7 @@ vendor/*
 
 # wp core
 wp/
+/wp-config.php
+/index.php
 
 

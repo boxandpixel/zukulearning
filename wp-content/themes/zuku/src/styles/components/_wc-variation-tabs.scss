@@ -1,0 +1,30 @@
+/* Scope all styles to the course-variation parent container to avoid clashes */
+.course-variation .course-type-tabs {
+    display: flex;
+    // margin-bottom: 20px;
+}
+
+.course-variation .course-type-tab {
+    margin-right: 20px;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.course-variation .course-type-tab.selected {
+    background-color: #0073e6;
+    color: white;
+}
+
+/* Hide the default duration select field */
+.course-variation .woocommerce-page .variations select {
+    display: none;
+}
+
+/* Ensure the duration dropdown is visible */
+.course-variation .woocommerce-page .variations select[name="attribute_duration"] {
+    display: block !important;
+}

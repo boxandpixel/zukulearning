@@ -1,0 +1,9 @@
+// _colors.functions.scss
+
+@use 'sass:map';
+@use 'colors.map' as colors;
+
+@function color($name) {
+    @return map.get(colors.$zuku-colors, $name);
+}
+  

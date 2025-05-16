@@ -1,0 +1,108 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.promo {
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include breakpoint(tablet) {
+        margin-bottom: 80px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        @include content-wide;
+
+        @include breakpoint(tablet) {
+            flex-direction: row;
+            justify-content: space-between;
+        }   
+        
+        .promo__text-content {
+            padding: 40px 27px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            aspect-ratio: 342 / 400;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+
+            &.promo__text-content--light-blue {
+                background-color: color(skyBlue);
+            }
+
+            &.promo__text-content--light-salmon {
+                background-color: color(salmon);
+            }
+            
+            &.promo__text-content--white {
+                background-color: white;
+            }
+            
+            &.promo__text-content--cream {
+                background-color: color(cream);
+            }  
+            
+            @include breakpoint(tablet) {
+                padding: 50px;
+                aspect-ratio: unset;
+                width: 50%;
+                border-top-left-radius: unset;
+                border-top-right-radius: unset;
+                @include border-radius(40px);
+            }
+
+            .promo__details {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+
+                a {
+                    width: auto;
+                    align-self: flex-start;
+                }
+            }
+                        
+        }
+
+        .promo__image {
+            aspect-ratio: 342 / 400;
+            background-size: cover;
+            background-position: center;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;            
+
+            @include breakpoint(tablet) {
+                aspect-ratio: 611 / 525;
+                width: 50%;      
+                @include border-radius(40px);          
+            }
+            img {
+                aspect-ratio: 342 / 400;
+                width: 100%;
+                height: auto;
+                @include border-radius(40px);
+
+                @include breakpoint(tablet) {
+                    aspect-ratio: unset;
+                }
+            }
+        }
+    }
+
+
+
+
+
+    .cta__text-content {
+
+    }
+
+    .cta__link {
+
+    }
+}

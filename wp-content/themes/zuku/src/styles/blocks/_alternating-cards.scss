@@ -1,0 +1,137 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+.alternating-cards {
+    background-color: rgba(color(skyBlue), .5);
+    padding-top: 40px;
+    padding-bottom: 40px;
+    
+    // width: 1150px;
+
+    @include breakpoint(tablet) {
+        padding-top: 80px;
+        padding-bottom: 80px;
+        // margin-bottom: 80px;
+    }
+
+    .container {
+        @include content-wide;
+
+        .alternating-cards__header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 50px;
+
+            @include breakpoint(tablet) {
+                margin-bottom: 64px;
+            }
+
+            .alternating-cards__eyebrow {
+                margin-bottom: 8px;
+            }
+
+            .alternating-cards__heading {
+                margin-bottom: 16px;
+            }
+
+            .alternating-cards__description {
+                width: 100%;
+                max-width: 902px;
+                margin-bottom: 32px;
+                margin-left: auto;
+                margin-right: auto;
+            }  
+            
+            .alternating-cards__links {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 17px;
+
+                @include breakpoint(tablet) {
+                    align-items: unset;
+                    justify-content: center;
+                    flex-direction: row;
+                }
+
+                a {
+                    width: 100%;
+                    max-width: 240px;
+
+                    @include breakpoint(tablet) {
+                        // max-width: unset;
+                    }
+                }
+            }
+        }
+
+        .alternating-cards__groups {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            @include breakpoint(tablet) {
+                gap: 22px;
+            }
+
+            .alternating-cards__group {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                @include breakpoint(tablet) {
+                    flex-direction: row;
+                }
+
+                &:nth-of-type(even) {
+                    @include breakpoint(tablet) {
+                        flex-direction: row-reverse;
+                    }
+                }
+
+                .alternating-cards__image-card {
+                    @include breakpoint(tablet) {
+                        width: 394px;
+                        flex-shrink: 0;
+                    }
+
+                    img {
+                        max-width: 100%;
+                        @include border-radius__top-left;
+                        @include border-radius__top-right;
+                        @include border-radius__bottom-right;
+                        @include border-radius__bottom-left;
+                    }
+                }
+
+                .alternating-cards__text-card {
+                    padding: 20px;
+                    background: white;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    @include border-radius__top-left;
+                    @include border-radius__top-right;
+                    @include border-radius__bottom-right;
+                    @include border-radius__bottom-left;
+                    
+                    @include breakpoint(tablet) {
+                        padding: 40px;
+                        flex: 1;
+                        min-width: 0;
+                    }     
+                    
+                    p {
+                        @include breakpoint(tablet) {
+                            max-width: 607px;
+                        }
+                    }
+                }
+            }
+
+        }
+     
+    }
+}

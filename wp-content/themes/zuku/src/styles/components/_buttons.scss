@@ -1,0 +1,279 @@
+// _buttons
+
+@use 'sass:map';
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+
+// $button-variants: (
+//   primary: (
+//     bg: transparent,
+//     color: color(navy),
+//     border: 2px solid color(navy),
+//   ),
+//   primary-fill: (
+//     bg: color(navy),
+//     color: white,
+//   ),
+//   disabled: (
+//     bg: transparent,
+//     color: color(navyLight),
+//     border: 2px solid color(navyLight)
+//   ),
+//   disabled-fill: (
+//     bg: color(navyVeryLight),
+//     color: color(black)
+//   ),
+//   secondary: (
+//     bg: transparent,
+//     color: white,
+//     border: 2px solid white
+//   )
+// );
+
+.button {
+  padding: 13px 36px 15px;
+  @include button-base;
+
+  @include apply-typography(button);
+
+
+  &--primary {
+    background-color: transparent;
+
+    color: color(navy);
+    border: 2px solid color(navy);
+
+    &::after {
+      @include button-arrow(color(navy));
+      @include button-after;
+      
+    }
+
+    &:hover {
+      
+      color: color(navy);
+
+      &:after {
+        @include button-hover-after;
+      }
+    }
+  }
+
+  &--primary-fill {
+    background-color: color(navy);
+    color: white;
+
+    &::after {
+      @include button-after;
+      @include button-arrow(white);
+    }
+
+    &:hover {
+      color: white;
+
+      &::after {
+        @include button-hover-after;
+      }
+    }    
+  }
+
+  &--disabled {
+    background-color: transparent;
+    color: color(navyLight);
+    border: 2px solid color(navyLight);
+
+    &::after {
+      @include button-arrow(color(navyLight));
+    }
+
+    &:hover {
+      color: color(navyLight);
+    }        
+  }
+
+  &--disabled-fill {
+    background-color: color(navyVeryLight);
+    color: color(navy);
+
+    &::after {
+      @include button-arrow(color(navy));
+    }
+
+    &:hover {
+      color: color(navy);
+    }        
+  }  
+
+  &--secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+
+    &::after {
+      @include button-after;
+      @include button-arrow(white);
+    }
+
+    &:hover {
+      color: white;
+
+      &::after {
+        @include button-hover-after;
+      }
+    }        
+  }
+
+  // @each $name, $props in $button-variants {
+  //   &--#{$name} {
+  //     background-color: map.get($props, bg);
+  //     color: map.get($props, color);
+  //     border: if(map.has-key($props, border), map.get($props, border), none);
+
+  //     &::after {
+  //       color: map.get($props, color); // applies to SVG fill via currentColor
+  //     }
+  
+  //     &:hover {
+  //       color: map.get($props, color); 
+  //       &::after {
+  //         color: map.get($props, color); // re-apply just in case specificity affects it
+  //       }
+  //     }
+  //   }
+  // }
+}
+
+
+
+.menu .menu-item--button {
+  display: block;
+  padding: 13px 36px 15px;
+  border-radius: 999px;
+  text-align: center;
+  cursor: pointer;
+
+  @include breakpoint(tablet) {
+    display: inline-block;
+    // max-width: 150px;
+    margin-top: 24px;
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: inherit;
+    transition: all 0.3s ease;
+    gap: 0;
+    position: relative;
+
+    @include apply-typography(body-link);
+
+  }
+
+  &.menu-item--primary {
+    background-color: transparent;
+    color: color(navy);
+    border: solid 2px color(navy);
+
+    a {
+      color: color(navy);
+      &::after {
+        @include button-after;
+        @include button-arrow(color(navy));
+      } 
+    }
+
+    &:hover a {
+      &:after {
+        @include button-hover-after;
+      }
+    }
+
+  }
+
+  &.menu-item--primary-fill {
+    background-color: color(navy);
+    color: white;
+
+    a {
+      color: white;
+      &::after {
+        @include button-after;
+        @include button-arrow(white);
+      }
+    }
+
+    &:hover a {
+      &:after {
+        @include button-hover-after;
+      }
+    }
+  }
+
+  &.menu-item--disabled {
+    background-color: transparent;
+    color: color(navyLight);
+    border: solid 2px color(navyLight);
+
+    a {
+      color: color(navyLight);
+      &::after {
+        @include button-arrow(color(navyLight));
+      }
+    }       
+  }
+
+  &.menu-item--disabled-fill {
+    background-color: color(navyVeryLight);
+    color: color(navy);
+
+    a {
+      color: color(navy);
+      &::after {
+        @include button-arrow(color(navy));
+      }
+    }        
+  }  
+
+  &.menu-item--secondary {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+
+    a {
+      color: white;
+      &::after {
+        @include button-after;
+        @include button-arrow(white);
+      }
+    }
+    
+    &:hover a{
+      &::after {
+        @include button-hover-after;
+      }
+    }
+  }  
+
+  // @each $name, $props in $button-variants {
+  //   &.menu-item--#{$name} {
+  //     background-color: map.get($props, bg);
+  //     color: map.get($props, color);
+  //     border: if(map.has-key($props, border), map.get($props, border), none);
+
+  //     a {
+  //       color: inherit;
+  //     }
+  //   }
+  // }
+}
+
+
+  
+
+
+
+

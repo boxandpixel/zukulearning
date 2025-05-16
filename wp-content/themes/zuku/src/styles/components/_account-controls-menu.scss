@@ -1,0 +1,61 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors.functions' as *;
+@use '../abstracts/typography.mixins' as *;
+
+
+// .site-header__menu-toggle {
+//     // display: none;
+// }
+
+.menu-account-controls-container {
+    ul#account-controls-menu {
+        display: flex;
+        gap: 6px;
+
+        @include breakpoint(tablet) {
+            gap: 8px;
+        }
+
+        li {
+            a {
+                display: block;
+                width: 30px;
+                height: 30px;
+                text-indent: -9999rem;
+
+                @include breakpoint(tablet) {
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+
+            &.account-controls-menu-item--account {
+                a {
+                    @include account-icon(none, color(navy), color(navy));
+
+                    &:hover {
+                        @include account-icon(color(navy), color(navy), white);
+                    }
+                }
+                
+            }
+
+            &.account-controls-menu-item--cart {
+                a {
+                    @include cart-icon(none, color(navy), color(navy));
+
+                    &:hover {
+                        @include cart-icon(color(navy), color(navy), white)
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+  
+
+
+
+
